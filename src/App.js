@@ -110,6 +110,9 @@ function App() {
     if (attractionFilter !== "All") {
       baseQuery += `&fq=attractionName:"${attractionFilter}"`
     }
+    if (usefulnessFilter !== "All") {
+      baseQuery += `&fq=usefulness:${usefulnessFilter}`
+    }
     return baseQuery
   }
 
@@ -347,7 +350,7 @@ function App() {
         {
           !(loading) && (reviews.length > 0) && (
             <div>
-              <h5>Displaying {start+1} to {start+rowsPerPage} of {maxRowIndex+1} reviews.</h5>
+              <h5>Displaying {start+1} to {start+rowsPerPage > maxRowIndex ? maxRowIndex+1 : start+rowsPerPage} of {maxRowIndex+1} reviews.</h5>
               <div>
                 <IconButton onClick={() => {handleChangeStart(start-rowsPerPage)}} disabled={start === 0 ? true : false} >
                   <ArrowBackIosIcon />
@@ -419,7 +422,7 @@ function App() {
             <RadioGroup value={usefulnessFilter} onChange={(event) => {setUsefulnessFilter(event.target.value)}}>
               <FormControlLabel value="All" control={<Radio />} label="All" />
               <FormControlLabel value="useful" control={<Radio />} label="Useful" />
-              <FormControlLabel value="not useful" control={<Radio />} label="Not Useful" />
+              <FormControlLabel value="useless" control={<Radio />} label="Not Useful" />
             </RadioGroup>
           </FormControl>
           <div />
