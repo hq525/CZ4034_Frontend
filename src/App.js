@@ -316,6 +316,7 @@ function App() {
                             </Typography>
                             <Rating value={review.ratings / 10} readOnly />
                           </div>
+                          <em>{review.attractionName}</em>
                         </React.Fragment>
                       }
                       secondary={
