@@ -23,7 +23,8 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
-  FormControlLabel
+  FormControlLabel,
+  Fab
 } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -297,7 +298,7 @@ function App() {
             <List className={classes.root}>
               {
                 reviews.map((review) =>
-                  <ListItem key={review.id} button alignItems="flex-start">
+                  <ListItem key={review.id} button disableRipple alignItems="flex-start">
                     <ListItemAvatar>
                       <Avatar src={review.reviewerProfilePicURL} />
                     </ListItemAvatar>
@@ -333,6 +334,15 @@ function App() {
                           <Link href={review.reviewURL}>
                             {review.reviewURL}
                           </Link>
+                          <div style={{marginTop: "10px"}} />
+                          <Fab variant="extended">
+                            <b>Useful</b>
+                          </Fab>
+                          <span style={{marginLeft: "20px"}}>
+                            <Fab variant="extended">
+                              <b>Not Useful</b>
+                            </Fab>
+                          </span>
                         </React.Fragment>
                       }
                     />
